@@ -1,0 +1,16 @@
+<openerp>
+  <data>
+
+      <record id="rsreservation_inherit_view" model="ir.ui.view">
+            <field name="name">rs.reservation.inherit.view</field>
+            <field name="model">rs.reservation</field>
+            <field name="inherit_id" ref="sky_height.rsreservation_form_view"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//page[@name='Commissions']" position="attributes">
+                            <attribute name="groups">sales_customiz.group_reservation_commissions</attribute>
+                    </xpath>
+            </field>
+      </record>
+
+  </data>
+</openerp>

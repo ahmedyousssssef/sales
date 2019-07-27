@@ -1,0 +1,23 @@
+<openerp>
+  <data>
+
+         <record model="ir.ui.view" id="sales_customiz_form_view_lead_form_inherit">
+                    <field name="name">crm.lead.form</field>
+                    <field name="model">crm.lead</field>
+                    <field name="inherit_id" ref="sky_height.isky_form_view_lead_form_inherit"/>
+                    <field name="arch" type="xml">
+
+                        <xpath expr="//group/group/field[@name='broker_id']" position="after">
+                            <field name="broker_name" attrs="{'invisible':[('source','!=', 'broker')]}"/>
+                            <field name="broker_mobil" attrs="{'invisible':[('source','!=', 'broker')]}"/>
+                        </xpath>
+                        <xpath expr="//group/group/field[@name='sales_type']" position="after">
+                            <field name="date_original"/>
+                        </xpath>
+
+
+
+                    </field>
+         </record>
+  </data>
+</openerp>

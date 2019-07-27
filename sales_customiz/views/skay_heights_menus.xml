@@ -1,0 +1,276 @@
+<openerp>
+  <data>
+
+        <record id="sales_customiz.property_blocked_action" model="ir.actions.act_window">
+            <field name="name">Blocked Property</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'),('status','=','blocked')]</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+
+        <record id="isky_access_rights.property_unavailable_action" model="ir.actions.act_window">
+            <field name="name">Temp Reservation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'),('status','=','not_available'), ('resp_user_id', '=', uid)]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+        <record id="isky_access_rights.property_unavailable_sale_teamleader_action" model="ir.actions.act_window">
+            <field name="name">Temp Reservation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'),('status','=','not_available'), '|' ,('resp_user_id', '=',
+                uid), ('resp_user_id.sale_team_id.user_id', '=', uid)]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+         <record id="isky_access_rights.property_unavailable_sales_manager_action" model="ir.actions.act_window">
+            <field name="name">Temp Reservation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'),('status','=','not_available'), '|' ,('resp_user_id', '=',
+                uid), ('resp_user_id.sale_team_id.sales_manager_id', '=', uid)]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+        <record id="isky_access_rights.property_unavailable_sales_operations_team_action" model="ir.actions.act_window">
+            <field name="name">Temp Reservation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'),('status','=','not_available')]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+
+        <record id="isky_access_rights.property_reserved_property_saleperson_action" model="ir.actions.act_window">
+            <field name="name">Contracted Property</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'), ('status','in', ['reserved', 'delivered', 'contracted']), ('reserved_user_ids', 'in', [uid])]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+        <record id="isky_access_rights.property_reserved_property_teamleader_action" model="ir.actions.act_window">
+            <field name="name">Contracted Property</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'), ('status','in', ['reserved', 'delivered', 'contracted']), '|',('reserved_user_ids', 'in', [uid]),
+                ('reserved_user_ids.sale_team_id.user_id', '=', [uid])]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+        <record id="isky_access_rights.property_reserved_property_sales_manager_action" model="ir.actions.act_window">
+            <field name="name">Contracted Property</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'), ('status','in', ['reserved', 'delivered', 'contracted']), '|',('reserved_user_ids', 'in', [uid]),
+                ('reserved_user_ids.sale_team_id.sales_manager_id', 'in', [uid])]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+        <record id="isky_access_rights.property_reserved_property_sales_head_action" model="ir.actions.act_window">
+            <field name="name">Contracted Property</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_search_form_view"/>
+            <field name="context">{"search_default_property":1,"default_type":"property"}}</field>
+            <field name="domain">[('type','=','property'), ('status','in', ['reserved', 'delivered', 'contracted'])]
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+                <p>
+                    You must define a product for everything you buy or sell,
+                    whether it's a physical product, a consumable or service.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="main_blocked_property_menu"
+          name="Blocked Property"
+          parent="sky_height.menu_properties"
+          sequence="99"
+          action="sales_customiz.property_blocked_action"
+          groups="isky_access_rights.development_user"
+        />
+
+
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_unavailable_property_menu">
+            <field name="name">Temp Reservation</field>
+            <!--<field name="action">sales_customiz.property_unavailable_action_sales_customize</field>-->
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_unavailable_property_sale_teamleader_menu">
+            <field name="name">Temp Reservation</field>
+            <!--<field name="action">sales_customiz.property_unavailable_sale_teamleader_action_sales_customize</field>-->
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_unavailable_property_sale_manager_menu">
+            <field name="name">Temp Reservation</field>
+            <!--<field name="action">sales_customiz.property_unavailable_sales_manager_action_sales_customize</field>-->
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_unavailable_property_operations_team_menu">
+            <field name="name">Temp Reservation</field>
+            <!--<field name="action">sales_customiz.property_unavailable_sales_operations_team_action_sales_customize</field>-->
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_reserved_property_saleperson_menu">
+            <field name="name">Contracted Property</field>
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_reserved_property_teamleader_menu">
+            <field name="name">Contracted Property</field>
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_reserved_property_sales_manager_menu">
+            <field name="name">Contracted Property</field>
+        </record>
+
+
+
+        <record model="ir.ui.menu" id="isky_access_rights.main_reserved_property_sales_head_menu">
+            <field name="name">Contracted Property</field>
+        </record>
+
+
+        <record model="ir.ui.menu" id="sky_height.main_reserved_property_menu">
+            <field name="name">Contracted Property</field>
+        </record>
+
+  </data>
+</openerp>
